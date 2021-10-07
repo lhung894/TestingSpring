@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org " lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>Test!!!!</title>
+</head>
+<body>
+
+<main>
+
+    <section class="player player--0 player--active">
+        <form action="#" th:action="@{/index}" th:object="${vd}" method="post">
+            <p>
+                <label>Dữ liệu: </label>
+                <input type="text" th:field="*{dauvao}"/>
+            </p>
+            <br>
+            <button class="btn btn--new" type="submit">✔</button>
+        </form>
+    </section>
+
+    <section class="player player--0 ">
+
+        <div class="form2">
+            <p> Câu 1: Tổng S=1+2+...+n.</p>
+            <span th:text="${vd.a}"></span>
+            <p> Câu 2: Tổng các ước số của n.</p>
+            <span th:text="${vd.b}"></span>
+            <p> Câu 3: Tổng các số nguyên tố <=n.</p>
+            <span th:text="${vd.c}"></span>
+            <p> Câu 4: Thừa số nguyên số của n.</p>
+            <span th:text="${vd.d}"></span>
+        </div>
+
+    </section>
+
+</main>
+</body>
+</html>
