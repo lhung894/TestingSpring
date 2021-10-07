@@ -1,8 +1,6 @@
 package com.example.demo.person;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class VD
 {
@@ -99,7 +97,7 @@ public class VD
 	 public static void main (String[] args)
 	 {
 		  VD vd = new VD ();
-		  int n = 1122334455;
+		  int n = 2;
 		  HashMap<Integer, Integer> hashMap1 = new HashMap<Integer, Integer> ();
 		  int temp = n;
 		  int count = 0;
@@ -124,13 +122,33 @@ public class VD
 				}
 		  }
 //		  System.out.println (hashMap1);
-		  StringBuilder finalText = new StringBuilder ();
-		  for (Integer key : hashMap1.keySet ())
+//		  StringBuilder finalText = new StringBuilder ();
+//		  for (Integer key : hashMap1.keySet ())
+//		  {
+//				finalText.append (String.valueOf (key)).append ("^").append (String.valueOf (hashMap1.get (key))).append (" x ");
+//
+//		  }
+		  String finalText = "";
+		  
+		  Iterator hmIterator = hashMap1.entrySet ().iterator ();
+		  while (hmIterator.hasNext ())
 		  {
-				finalText.append (String.valueOf (key)).append ("^").append (String.valueOf (hashMap1.get (key))).append (" x ");
+				Map.Entry mapElement = (Map.Entry) hmIterator.next ();
+				int marks = ((int) mapElement.getValue ());
 				
+				if (! hmIterator.hasNext ())
+				{
+//					 System.out.print (mapElement.getKey () + "^" + marks);
+					 finalText += String.valueOf (mapElement.getKey () + "^" + marks);
+				}
+				else
+				{
+//					 System.out.print (mapElement.getKey () + "^" + marks + " x ");
+					 finalText += String.valueOf (mapElement.getKey () + "^" + marks + " x ");
+				}
 		  }
-		  System.out.println (finalText.substring (0, finalText.length () - 2).toString ());
+		  System.out.println (finalText.toString ());
+		  
 	 }
 	 
 	 

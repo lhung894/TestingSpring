@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -178,6 +180,11 @@ public class CalculatorController
 				return "Not Valid!!!";
 		  }
 		  
+		  if (n.equals ("1"))
+		  {
+				return "1";
+		  }
+		  
 		  long number = Long.parseLong (n);
 		  HashMap<Integer, Integer> hashMap1 = new HashMap<Integer, Integer> ();
 		  long temp = number;
@@ -202,13 +209,26 @@ public class CalculatorController
 					 }
 				}
 		  }
-//		  System.out.println (hashMap1);
-		  StringBuilder finalText = new StringBuilder ();
-		  for (Integer key : hashMap1.keySet ())
+		  
+		  String finalText = "";
+		  
+		  Iterator hmIterator = hashMap1.entrySet ().iterator ();
+		  while (hmIterator.hasNext ())
 		  {
-				finalText.append (String.valueOf (key)).append ("^").append (String.valueOf (hashMap1.get (key))).append (" x ");
+				Map.Entry mapElement = (Map.Entry) hmIterator.next ();
+				int marks = ((int) mapElement.getValue ());
 				
+				if (! hmIterator.hasNext ())
+				{
+//					 System.out.print (mapElement.getKey () + "^" + marks);
+					 finalText += String.valueOf (mapElement.getKey () + "^" + marks);
+				}
+				else
+				{
+//					 System.out.print (mapElement.getKey () + "^" + marks + " x ");
+					 finalText += String.valueOf (mapElement.getKey () + "^" + marks + " x ");
+				}
 		  }
-		  return finalText.substring (0, finalText.length () - 2).toString ();
+		  return finalText.toString ();
 	 }
 }
